@@ -2,9 +2,9 @@
 
 > Sample 3-Tier azure cloud architecture implemented with Pulumi
 
-The goal is an architecture with following requirements:
+The goal, is an architecture that satisfies the following requirements:
 
-<!-- TODO: How achieved -->
+<!-- TODO: Describe How achieved -->
 
 1. Modularity
 2. Scalability
@@ -21,15 +21,16 @@ Components:
 1. **Availability Sets** : Increases the availability to reach the given SLAs
 2. **Subnets**: Separate the networks
 3. **Load Balancers** :
-   - External load balancer with public IP to distribute incoming traffic to the Frontend tier.
-   - Internal load balancer to distribute frontend traffic to the middleware tier
+   - _External_ load balancer with public IP to distribute incoming traffic to the Frontend tier.
+   - _Internal_ load balancer to distribute frontend traffic to the middleware tier
 4. **NSGs / Network security groups** : Restrict network traffic within the virtual network.
-   - Only the middleware should be able to access the Backend / DB tier
+   - F.ex: Only the middleware should be able to access the Backend / DB tier
 5. **Key Vault** : Store encryption keys to encrypt the replication data at rest
+6. **Bastion:** A way to securely access the VMs in the virtual network from the outside
 
 ## Practical implementation
 
-> An exemplary frontend tier is implemented to showcase a part of the architecture.
+> The frontend tier will be used to exemplary showcase the provisioning of the infrastructure.
 
 For this demo, we add two parts which are non azure related:
 
