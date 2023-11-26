@@ -2,31 +2,40 @@
 
 > Sample 3-Tier azure cloud architecture implemented with Pulumi
 
-The goal, is an architecture that satisfies the following requirements:
-
 <!-- TODO: Describe How achieved -->
 
-1. Modularity
-2. Scalability
-3. High Availability
-4. Fault tolerance
-5. Security
+## Requirements
+
+Requirements and how they're ensured:
+
+1. Availability
+   - Virtual Machine Scale Sets (VMSS)
+   - Load Balancer
+   - Auto Scaling
+   - Azure multi region infrastructure
+2. Security
+   - Azure firewall
+   - Network security groups (NSGs)
+   - Subnets
+   - Key Vault
+   - Bastion
+3. Backup and recovery
+   - Azure site recovery
+   - Failover mechanisms for critical components
+   - Azure Backups
+4. Monitoring
+   - Azure monitor and application insights
+   - Log analytics
+   - Automatic notification through the azure monitor
 
 ## Architecture
 
+Azure cloud architecture based on the requirements above:
+
 ![Architecture](diagrams/3-tier-azure-cloud-architecture.drawio.png)
 
-Components:
-
-1. **Availability Sets** : Increases the availability to reach the given SLAs
-2. **Subnets**: Separate the networks
-3. **Load Balancers** :
-   - _External_ load balancer with public IP to distribute incoming traffic to the Frontend tier.
-   - _Internal_ load balancer to distribute frontend traffic to the middleware tier
-4. **NSGs / Network security groups** : Restrict network traffic within the virtual network.
-   - F.ex: Only the middleware should be able to access the Backend / DB tier
-5. **Key Vault** : Store encryption keys to encrypt the replication data at rest
-6. **Bastion:** A way to securely access the VMs in the virtual network from the outside
+- The Virtual machine scale sets enable (multi region) auto scaling for better availability
+- The DMZ contains an Azure firewall and the Azure Monitor / Secure Center. All inbound / outbound traffic has to pass this zone to increase security.
 
 ## Practical implementation
 
