@@ -2,7 +2,10 @@
 
 > Sample 3-Tier azure cloud architecture implemented with Pulumi
 
-<!-- TODO: Describe How achieved -->
+![Architecture](diagrams/3-tier-azure-cloud-architecture.drawio.png)
+
+- The Virtual machine scale sets enable (multi region) auto scaling for better availability
+- The DMZ contains an Azure firewall and the Azure Monitor / Secure Center. All inbound / outbound traffic has to pass this zone to increase security.
 
 ## Requirements
 
@@ -27,15 +30,6 @@ Requirements and how they're ensured:
    - Azure monitor and application insights
    - Log analytics
    - Automatic notification through the azure monitor
-
-## Architecture
-
-Azure cloud architecture based on the requirements above:
-
-![Architecture](diagrams/3-tier-azure-cloud-architecture.drawio.png)
-
-- The Virtual machine scale sets enable (multi region) auto scaling for better availability
-- The DMZ contains an Azure firewall and the Azure Monitor / Secure Center. All inbound / outbound traffic has to pass this zone to increase security.
 
 ## Practical implementation
 
