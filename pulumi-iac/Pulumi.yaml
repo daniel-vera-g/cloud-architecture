@@ -1,0 +1,3 @@
+name: cloud-architectures
+runtime: nodejs
+description: Sample cloud architecture use case based in azure and implemented with Pulumi
