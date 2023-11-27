@@ -1,23 +1,47 @@
 import * as pulumi from "@pulumi/pulumi";
-import * as resources from "@pulumi/azure-native/resources";
-import * as storage from "@pulumi/azure-native/storage";
+import * as azure from "@pulumi/azure";
+import { setupNetwork } from "./networking";
+import { setupDmz } from "./dmz";
+import { setupFrontend } from "./frontend";
+import { setupBastion } from "./bastion";
+import { setupLoadBalancer } from "./load_balancer";
 
-// Create an Azure Resource Group
-const resourceGroup = new resources.ResourceGroup("resourceGroup");
-
-// Create an Azure resource (Storage Account)
-const storageAccount = new storage.StorageAccount("sa", {
-    resourceGroupName: resourceGroup.name,
-    sku: {
-        name: storage.SkuName.Standard_LRS,
-    },
-    kind: storage.Kind.StorageV2,
+// Set up the Azure resource group
+const resourceGroup = new azure.core.ResourceGroup("3TierResourceGroup", {
+  location: "West Europe",
 });
 
-// Export the primary key of the Storage Account
-const storageAccountKeys = storage.listStorageAccountKeysOutput({
-    resourceGroupName: resourceGroup.name,
-    accountName: storageAccount.name
-});
+// Set up the network
+const { vnet, dmzSubnet, frontendSubnet, bastionSubnet } = setupNetwork(
+  resourceGroup.name,
+  resourceGroup.location,
+  "3TierVnet"
+);
 
-export const primaryStorageKey = storageAccountKeys.keys[0].value;
+// // Set up the DMZ
+// const dmzResources = setupDmz(
+//   resourceGroup.name,
+//   resourceGroup.location,
+//   dmzSubnet
+// );
+
+// // Set up the Frontend
+// const frontendResources = setupFrontend(
+//   resourceGroup.name,
+//   resourceGroup.location,
+//   frontendSubnet
+// );
+
+// // Set up the Bastion
+// const bastionResources = setupBastion(
+//   resourceGroup.name,
+//   resourceGroup.location,
+//   bastionSubnet
+// );
+
+// // Set up the Load Balancer
+// const loadBalancerResources = setupLoadBalancer(
+//   resourceGroup.name,
+//   resourceGroup.location,
+//   frontendSubnet
+// );
