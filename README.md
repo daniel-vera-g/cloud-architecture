@@ -2,7 +2,7 @@
 
 > Sample 3-Tier azure cloud architecture
 
-<!-- - [Exemplary provisioning of the Frontend tier with Pulumi IaC](./pulumi-iac/README.md) -->
+- [Exemplary provisioning of the Frontend tier with Pulumi IaC](./pulumi-iac/README.md)
 
 ![Architecture](diagrams/3-tier-azure-cloud-architecture.drawio.png)
 
