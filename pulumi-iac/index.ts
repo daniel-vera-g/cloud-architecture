@@ -132,7 +132,7 @@ cat > index.html <<EOF
     </style>
     <script>
         var htmlContent = '<h1>Weltweit fuehrender Automobilhersteller mit Sitz in Deutschland</h1>' +
-                          '<img src="https://i.imgflip.com/887eyr.jpg" alt="Automobilhersteller" style="max-width:100%;height:auto;">';
+                          '<img src="https://i.imgflip.com/8885hi.jpg" alt="Automobilhersteller" style="max-width:100%;height:auto;">';
     </script>
 </head>
 <body>
