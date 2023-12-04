@@ -13,24 +13,24 @@ const subscriptionId = "";
 // --- Resource Group ---
 
 // All resources will share a resource group.
-const resourceGroupName = new resources.ResourceGroup("group4TheWin_rg", {
-  resourceGroupName: "group4TheWin_rg",
+const resourceGroupName = new resources.ResourceGroup(`${project}-rg`, {
+  resourceGroupName: `${project}-rg`,
 }).name;
 
 // --- Network ---
 
-const virtualNetwork = new network.VirtualNetwork("server-network", {
+const virtualNetwork = new network.VirtualNetwork(`${project}-network`, {
   resourceGroupName,
   addressSpace: { addressPrefixes: ["10.0.0.0/16"] },
 });
 
-const subnet = new azure_native.network.Subnet("subnet", {
+const vmSubnet = new azure_native.network.Subnet(`${project}-vmSubnet`, {
   resourceGroupName: resourceGroupName,
   virtualNetworkName: virtualNetwork.name,
   addressPrefix: "10.0.1.0/24",
 });
 
-const publicIp = new network.PublicIPAddress("server-ip", {
+const publicIp = new network.PublicIPAddress(`${project}-ip`, {
   resourceGroupName,
   publicIPAllocationMethod: azure_native.network.IPAllocationMethod.Static,
   sku: { name: azure_native.network.PublicIPAddressSkuName.Standard },
@@ -96,6 +96,8 @@ const loadBalancer = new network.LoadBalancer(lbName, {
   ],
 });
 
+// --- VM ---
+
 // Create Network Security Group
 const securityGroup = new network.NetworkSecurityGroup(
   `${project}-security-group`,
@@ -118,67 +120,90 @@ const securityGroup = new network.NetworkSecurityGroup(
   { dependsOn: [loadBalancer] }
 );
 
-// --- VM ---
+const initScript = `#!/bin/bash
+cat > index.html <<EOF
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weltweit fuehrender Automobilhersteller</title>
+    <style>
+        body { text-align: center; }
+        h1 { margin-top: 20px; }
+    </style>
+    <script>
+        var htmlContent = '<h1>Weltweit fuehrender Automobilhersteller mit Sitz in Deutschland</h1>' +
+                          '<img src="https://i.imgflip.com/887eyr.jpg" alt="Automobilhersteller" style="max-width:100%;height:auto;">';
+    </script>
+</head>
+<body>
+    <script>
+        document.body.innerHTML = htmlContent;
+    </script>
+</body>
+</html>
+EOF
 
-const networkInterface = new network.NetworkInterface(
-  `${project}-network-interface`,
-  {
-    resourceGroupName: resourceGroupName,
-    networkSecurityGroup: {
-      id: securityGroup.id,
-    },
-    ipConfigurations: [
-      {
-        name: "webserver-ipconfiguration",
-        privateIPAllocationMethod: "Dynamic",
-        subnet: {
-          id: subnet.id,
-        },
-        loadBalancerBackendAddressPools: [
-          {
-            id: pulumi.interpolate`${loadBalancer.id}/backendAddressPools/${lbName}-backend`,
-          },
-        ],
-      },
-    ],
-  },
-  { dependsOn: [loadBalancer] }
-);
-
-const initScript = `#!/bin/bash\n
-echo "Hello, World!" > index.html
 nohup python -m SimpleHTTPServer 80 &`;
 
 // Now create the VM, using the resource group and NIC allocated above.
-const vm = new compute.VirtualMachine(
-  "server-vm",
+const vmScaleSet = new compute.VirtualMachineScaleSet(
+  `${project}-vmss`,
   {
-    resourceGroupName,
-    networkProfile: {
-      networkInterfaces: [{ id: networkInterface.id }],
+    resourceGroupName: resourceGroupName,
+    location: "Germany West Central", // Replace with your desired location
+    sku: {
+      name: "Standard_B2s", // VM size
+      capacity: 2, // Number of VMs in the scale set
     },
-    hardwareProfile: {
-      vmSize: compute.VirtualMachineSizeTypes.Standard_B2s,
+    overprovision: true,
+    upgradePolicy: {
+      mode: "Automatic",
     },
-    osProfile: {
-      computerName: "hostname",
-      adminUsername: username,
-      adminPassword: password,
-      customData: Buffer.from(initScript).toString("base64"),
-      linuxConfiguration: {
-        disablePasswordAuthentication: false,
+    virtualMachineProfile: {
+      networkProfile: {
+        networkInterfaceConfigurations: [
+          {
+            name: `${project}-nicconfig`,
+            primary: true,
+            networkSecurityGroup: {
+              id: securityGroup.id,
+            },
+            ipConfigurations: [
+              {
+                name: "ipconfig",
+                subnet: {
+                  id: vmSubnet.id,
+                },
+                loadBalancerBackendAddressPools: [
+                  {
+                    id: lbBackendId,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
       },
-    },
-    storageProfile: {
-      osDisk: {
-        createOption: compute.DiskCreateOption.FromImage,
-        name: "myosdisk1",
+      osProfile: {
+        computerNamePrefix: "vmss",
+        adminUsername: username,
+        adminPassword: password,
+        customData: Buffer.from(initScript).toString("base64"),
+        linuxConfiguration: {
+          disablePasswordAuthentication: false,
+        },
       },
-      imageReference: {
-        publisher: "canonical",
-        offer: "UbuntuServer",
-        sku: "18.04-LTS",
-        version: "latest",
+      storageProfile: {
+        osDisk: {
+          createOption: compute.DiskCreateOptionTypes.FromImage,
+          caching: compute.CachingTypes.ReadWrite,
+        },
+        imageReference: {
+          publisher: "canonical",
+          offer: "UbuntuServer",
+          sku: "18.04-LTS",
+          version: "latest",
+        },
       },
     },
   },
@@ -187,7 +212,7 @@ const vm = new compute.VirtualMachine(
 
 // The public IP address is not allocated until the VM is running, so wait for that
 // resource to create, and then lookup the IP address again to report its public IP.
-export const ipAddress = vm.id.apply((_) =>
+export const ipAddress = vmScaleSet.id.apply((_) =>
   network.getPublicIPAddressOutput({
     resourceGroupName: resourceGroupName,
     publicIpAddressName: publicIp.name,
