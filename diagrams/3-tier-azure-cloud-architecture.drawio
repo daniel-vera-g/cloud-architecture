@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-12-04T21:27:03.381Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="BmqctfUE_B9AaIbSRDS4" version="22.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-05T21:16:53.245Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="SSkixCxKyWwa7Kxw7GFW" version="22.1.5" type="github">
   <diagram name="Seite-1" id="maiuEfRSI5jtlyw9wFW1">
-    <mxGraphModel dx="3263" dy="1228" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3141" dy="1167" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -161,14 +161,11 @@
         <mxCell id="-oo8zRasElCVH7y7r7El-42" value="User defined&lt;br&gt;Routes" style="editableCssRules=.*;html=1;shape=image;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnY9Imh0dHBzOi8vdmVjdGEuaW8vbmFubyIgd2lkdGg9IjIwIiBoZWlnaHQ9IjE5LjI5OTk5OTIzNzA2MDU0NyIgdmlld0JveD0iMCAwIDIwIDE5LjI5OTk5OTIzNzA2MDU0NyI+JiN4YTsJPHN0eWxlIHR5cGU9InRleHQvY3NzIj4mI3hhOwkuc3Qwe2ZpbGw6IzQyODVmNDt9JiN4YTsJLnN0MXtmaWxsOiM2NjlkZjY7fSYjeGE7CTwvc3R5bGU+JiN4YTsJPHBhdGggY2xhc3M9InN0MCIgZD0iTTIuNDMgNi4xSDBWMi42N2gzLjk0bDguNCAxMC40OWgyLjM0di0yLjcyTDIwIDE0Ljg3bC01LjMyIDQuNDN2LTIuNzFoLTMuODd6Ii8+JiN4YTsJPHBhdGggY2xhc3M9InN0MSIgZD0iTTE0LjY4IDYuMTR2Mi43MkwyMCA0LjQzIDE0LjY4IDB2Mi43MWgtMy44N0w4LjMzIDUuODJsMi4xMyAyLjY3IDEuODgtMi4zNXpNMCAxMy4ydjMuNDNoMy45NGwyLjUyLTMuMTUtMi4xMy0yLjY3LTEuOSAyLjM5eiIvPiYjeGE7PC9zdmc+;" parent="1" vertex="1">
           <mxGeometry x="230" y="624.5" width="40" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="UCjrdirE_-nSEqjf_-6h-1" value="SQL Database" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.sql_database_sql_azure;" vertex="1" parent="1">
+        <mxCell id="UCjrdirE_-nSEqjf_-6h-1" value="SQL Database" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.sql_database_sql_azure;" parent="1" vertex="1">
           <mxGeometry x="560" y="888" width="47.5" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="UCjrdirE_-nSEqjf_-6h-2" value="SQL Database&lt;br&gt;Replica" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.sql_database_sql_azure;" vertex="1" parent="1">
+        <mxCell id="UCjrdirE_-nSEqjf_-6h-2" value="SQL Database&lt;br&gt;Replica" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.sql_database_sql_azure;" parent="1" vertex="1">
           <mxGeometry x="711.1800000000001" y="888" width="47.5" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="UCjrdirE_-nSEqjf_-6h-3" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Azure_Firewall.svg;" vertex="1" parent="1">
-          <mxGeometry x="100" y="585" width="50" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
