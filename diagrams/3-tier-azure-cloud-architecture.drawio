@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-12-08T21:57:40.671Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="NVnowIThC8pyGLM6iWkf" version="22.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-08T22:09:59.237Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="C70qOTNZqxpebJ4Myinr" version="22.1.7" type="github">
   <diagram name="Seite-1" id="maiuEfRSI5jtlyw9wFW1">
     <mxGraphModel dx="4975" dy="2334" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -352,7 +352,7 @@
         <mxCell id="jWT8u0o1pstroZqOO4et-112" value="WAF" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=16;image=img/lib/azure2/networking/Web_Application_Firewall_Policies_WAF.svg;" vertex="1" parent="1">
           <mxGeometry x="68" y="1824" width="52" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="jWT8u0o1pstroZqOO4et-113" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;&amp;nbsp;Primary Ressource Group - Germany north: Zone 1 - 3&lt;/b&gt;" style="image;aspect=fixed;html=1;points=[];align=left;fontSize=16;image=img/lib/azure2/general/Resource_Groups.svg;labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;" vertex="1" parent="1">
+        <mxCell id="jWT8u0o1pstroZqOO4et-113" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;&amp;nbsp;Secondary Ressource Group - Germany north: Zone 1 - 3&lt;/b&gt;" style="image;aspect=fixed;html=1;points=[];align=left;fontSize=16;image=img/lib/azure2/general/Resource_Groups.svg;labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="-85" y="2530" width="53.13" height="50" as="geometry" />
         </mxCell>
         <mxCell id="jWT8u0o1pstroZqOO4et-117" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;" edge="1" parent="1" source="jWT8u0o1pstroZqOO4et-114" target="jPx4Ep0A8AZzdhjCGJ2x-48">
