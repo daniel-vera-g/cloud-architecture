@@ -6,9 +6,13 @@ import * as resources from "@pulumi/azure-native/resources";
 import * as azure_native from "@pulumi/azure-native";
 import * as insights from "@pulumi/azure-native/insights";
 
+const username = "";
+const password = "";
+const project = "";
+const subscriptionId = "";
+
 // --- Resource Group ---
 
-// All resources will share a resource group.
 const resourceGroupName = new resources.ResourceGroup(`${project}-rg`, {
   resourceGroupName: `${project}-rg`,
 }).name;
@@ -146,9 +150,9 @@ const vmScaleSet = new compute.VirtualMachineScaleSet(
   `${project}-vmss`,
   {
     resourceGroupName: resourceGroupName,
-    location: "Germany West Central", // Replace with your desired location
+    location: "Germany West Central",
     sku: {
-      name: "Standard_B2s", // VM size
+      name: "Standard_B2s",
       capacity: 2, // Number of VMs in the scale set
     },
     zones: ["1", "2"], // Add this line to specify the availability zones
