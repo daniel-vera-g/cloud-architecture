@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-12-08T09:31:20.013Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="irUQkyu8dGBmp_UthoIv" version="22.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-08T16:06:27.001Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="NZGC_AnDQEn4jMJzhnqt" version="22.1.7" type="github">
   <diagram name="Seite-1" id="maiuEfRSI5jtlyw9wFW1">
     <mxGraphModel dx="3592" dy="1556" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -132,10 +132,10 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="UCjrdirE_-nSEqjf_-6h-1" value="SQL Database" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.sql_database_sql_azure;" parent="1" vertex="1">
+        <mxCell id="UCjrdirE_-nSEqjf_-6h-1" value="Azure SQL Database" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.sql_database_sql_azure;" parent="1" vertex="1">
           <mxGeometry x="560" y="888" width="47.5" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="UCjrdirE_-nSEqjf_-6h-2" value="SQL Database&lt;br&gt;Replica" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.sql_database_sql_azure;" parent="1" vertex="1">
+        <mxCell id="UCjrdirE_-nSEqjf_-6h-2" value="Azure SQL Database&lt;br&gt;Replica" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.sql_database_sql_azure;" parent="1" vertex="1">
           <mxGeometry x="711.1800000000001" y="888" width="47.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="jWT8u0o1pstroZqOO4et-6" value="NSG" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.locked;" vertex="1" parent="1">
