@@ -4,11 +4,7 @@ import * as compute from "@pulumi/azure-native/compute";
 import * as network from "@pulumi/azure-native/network";
 import * as resources from "@pulumi/azure-native/resources";
 import * as azure_native from "@pulumi/azure-native";
-
-const username = "";
-const password = "";
-const project = "";
-const subscriptionId = "";
+import * as insights from "@pulumi/azure-native/insights";
 
 // --- Resource Group ---
 
@@ -155,6 +151,7 @@ const vmScaleSet = new compute.VirtualMachineScaleSet(
       name: "Standard_B2s", // VM size
       capacity: 2, // Number of VMs in the scale set
     },
+    zones: ["1", "2"], // Add this line to specify the availability zones
     overprovision: true,
     upgradePolicy: {
       mode: "Automatic",
@@ -209,6 +206,58 @@ const vmScaleSet = new compute.VirtualMachineScaleSet(
   },
   { dependsOn: [loadBalancer] }
 );
+
+
+// Create an Autoscale Setting
+const autoscaleSetting = new insights.AutoscaleSetting(`${project}-autoscale`, {
+    resourceGroupName: resourceGroupName,
+    location: "Germany West Central",
+    profiles: [{
+        name: "Auto created scale condition",
+        capacity: {
+            default: "1",
+            maximum: "5",
+            minimum: "1",
+        },
+        rules: [{
+            metricTrigger: {
+                metricName: "Percentage CPU",
+                metricResourceUri: vmScaleSet.id,
+                timeGrain: "PT1M",
+                statistic: "Average",
+                timeWindow: "PT2M",
+                timeAggregation: "Average",
+                operator: "GreaterThan",
+                threshold: 50,
+            },
+            scaleAction: {
+                direction: "Increase",
+                type: "ChangeCount",
+                value: "1",
+                cooldown: "PT1M",
+            },
+        }, {
+            metricTrigger: {
+                metricName: "Percentage CPU",
+                metricResourceUri: vmScaleSet.id,
+                timeGrain: "PT1M",
+                statistic: "Average",
+                timeWindow: "PT5M",
+                timeAggregation: "Average",
+                operator: "LessThan",
+                threshold: 25,
+            },
+            scaleAction: {
+                direction: "Decrease",
+                type: "ChangeCount",
+                value: "1",
+                cooldown: "PT1M",
+            },
+        }],
+    }],
+    targetResourceUri: vmScaleSet.id,
+});
+
 
 // The public IP address is not allocated until the VM is running, so wait for that
 // resource to create, and then lookup the IP address again to report its public IP.
