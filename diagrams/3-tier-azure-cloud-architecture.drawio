@@ -116,6 +116,7 @@
             <Array as="points">
               <mxPoint x="-750" y="913" />
             </Array>
+            <mxPoint x="550.4760000000001" y="931.9719999999998" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="jWT8u0o1pstroZqOO4et-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;fontSize=16;" edge="1" parent="1" source="-oo8zRasElCVH7y7r7El-3" target="jWT8u0o1pstroZqOO4et-78">
@@ -374,6 +375,15 @@
         </mxCell>
         <mxCell id="jWT8u0o1pstroZqOO4et-115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=16;" edge="1" parent="1" source="jPx4Ep0A8AZzdhjCGJ2x-1" target="jWT8u0o1pstroZqOO4et-114">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UCjrdirE_-nSEqjf_-6h-1" value="SQL Database" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.sql_database_sql_azure;" vertex="1" parent="1">
+          <mxGeometry x="560" y="888" width="47.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="UCjrdirE_-nSEqjf_-6h-2" value="SQL Database&lt;br&gt;Replica" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.sql_database_sql_azure;" vertex="1" parent="1">
+          <mxGeometry x="711.1800000000001" y="888" width="47.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="UCjrdirE_-nSEqjf_-6h-3" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Azure_Firewall.svg;" vertex="1" parent="1">
+          <mxGeometry x="100" y="585" width="50" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
