@@ -215,6 +215,7 @@ const vmScaleSet = new compute.VirtualMachineScaleSet(
 // Create an Autoscale Setting
 const autoscaleSetting = new insights.AutoscaleSetting(`${project}-autoscale`, {
     resourceGroupName: resourceGroupName,
+    enabled: true,
     location: "Germany West Central",
     profiles: [{
         name: "Auto created scale condition",
